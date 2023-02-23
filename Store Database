@@ -1,0 +1,22 @@
+CREATE TABLE clothing(id INTEGER PRIMARY KEY, item TEXT,department REAL, price NUMERIC, quanity INTEGER);
+
+INSERT INTO clothing VALUES(1, "shoes","footwear",40,43);
+INSERT INTO clothing VALUES(2,"socks","everyday", 10, 55);
+INSERT INTO clothing VALUES(3, "slipppers","footwear", 15, 40);
+INSERT INTO clothing VALUES(4,"boots","footwear", 60,37);
+INSERT INTO clothing VAlUES(5,"jacket","everyday",60,26);
+INSERT INTO clothing VALUES(6,"pants", "everyday",55,64);
+INSERT INTO clothing VALUES(7,"snowsuit","seasonal",67,20);
+INSERT INTO clothing VALUES(8,"swimsuit","seasonal",36,55);
+INSERT INTO clothing VALUES(9,"swimshorts", "seasonal",29,55);
+INSERT INTO clothing VALUES(10,"hats"," everyday", 16,26);
+INSERT INTO clothing VALUES(11,"scarf"," seasonal",12,34);
+INSERT INTO clothing VALUES(12,"shirts"," everyday",14,75);
+INSERT INTO clothing VALUES(13,"gloves","seasonal",10,28);
+INSERT INTO clothing VALUES(14,"sweater","everyday",22,44);
+INSERT INTO clothing VALUES(15,"ties","everyday",8,21);
+
+
+SELECT * FROM clothing
+WHERE ID
+ORDER BY price desc;
