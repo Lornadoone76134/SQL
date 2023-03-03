@@ -1,0 +1,28 @@
+CREATE TABLE actors (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT);
+INSERT INTO actors VALUES(1,"jim carrey");
+INSERT INTO actors VALUES(2,"zach galifiankis");
+INSERT INTO actors VALUES(3,"will smith");
+INSERT INTO actors VALUES(4,"james mcvoy");
+INSERT INTO actors VALUES(5,"hugh jackman");
+INSERT INTO actors VALUES(6,"ethan hawk");
+INSERT INTO actors VALUES(7,"anna farris");
+INSERT INTO actors VALUES(8,"charlize theron");
+INSERT INTO actors VALUES(9,"tom hanks");
+INSERT INTO actors VALUES(10,"keanu reeves");
+
+CREATE TABLE movies (star_id INTEGER, title TEXT,category TEXT,release_year INTEGER);
+INSERT INTO movies VALUES(1,"cable guy","comedy",1996);
+INSERT INTO movies VALUES(2,"masterminds","comedy",2016);
+INSERT INTO movies VALUES(3,"bright","action",2017);
+INSERT INTO movies VALUES(4,"split","thriller",2016);
+INSERT INTO movies VALUES(5,"wolverine","action",2013);
+INSERT INTO movies VALUES(6,"predestination","sfi",2014);
+INSERT INTO movies VALUES(7,"overboard","romantic/comedy",2018);
+INSERT INTO movies VALUES(8,"the huntsman winter's war","fantasy",2016);
+INSERT INTO movies VALUES(9,"forest gump","drama",1994);
+INSERT INTO movies VALUES(10,"matrix","sfi",1999);
+
+SELECT actors.name, movies.title,movies.release_year,movies.category
+FROM actors
+LEFT OUTER JOIN movies
+ON actors.id = movies.star_id
