@@ -1,0 +1,53 @@
+1.Show only the Customers from Canada
+SELECT * FROM chinook.customers 
+WHERE Country = "Canada" ;
+
+2.Show only Employees hired after Jan 1st, 2003
+SELECT * FROM chinook.Employees
+WHERE HIREDATE > '2003-01-01';
+
+3.Show the total sales made by each sales agent
+SELECT emp.FirstName, emp.LastName,
+ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
+FROM chinook.Employees emp
+
+JOIN chinook.Customers cust 
+ON cust.SupportRepId = emp.EmployeeId
+
+JOIN chinook.Invoices Inv 
+ON Inv.CustomerId = cust.CustomerId
+
+WHERE emp.Title = 'Sales Support Agent' 
+GROUP BY emp.FirstName;
+
+4.What are the total sales for 2010?
+SELECT SUM(Total)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2010-01-01' AND '2010-12-31';
+
+5.Which sales agent made the most dollars in sales in 2010?
+SELECT emp.FirstName, emp.LastName,
+ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
+FROM chinook.Employees emp
+
+JOIN chinook.Customers cust 
+ON cust.SupportRepId = emp.EmployeeId
+
+JOIN chinook.Invoices Inv 
+ON Inv.CustomerId = cust.CustomerId
+
+WHERE emp.Title = 'Sales Support Agent' 
+AND Inv.InvoiceDate LIKE '2010%' 
+GROUP BY emp.FirstName
+ORDER BY (round(sum(Inv.Total), 2))  DESC LIMIT 1;
+
+6. Show all the countries Invoiced
+SELECT DISTINCT BillingCountry
+    FROM chinook.invoices
+    ORDER BY BillingCountry ASC;
+    
+7.Show the Invoice Total, Customer name, Country and Sales Agent name for all invoices and customers
+SELECT inv.Total, cust.FirstName, cust.LastName, cust.Country, emp.FirstName, emp.LastName
+FROM chinook.customers as cust
+JOIN chinook.invoices as inv ON cust.CustomerId = inv.CustomerId
+JOIN chinook.employees as emp ON emp.EmployeeId = cust.SupportRepId;
